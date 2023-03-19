@@ -28,14 +28,14 @@ public class StudentRepositoryTest {
     @Test
     public void saveStudentWithGuardianDetails() {
         Guardian guardian = Guardian.builder()
-                .email("devbhadra1@gmail.com")
-                .name("Dev")
-                .mobileNumber("7777777777")
+                .email("ketanbhanushali1976@gmail.com")
+                .name("Ketan")
+                .mobileNumber("9820357776")
                 .build();
         Student student = Student.builder()
-                .emailId("shabbir@gmail.com")
-                .firstName("shabbir")
-                .lastName("ahluwalia")
+                .emailId("yashbhadra1@gmail.com")
+                .firstName("yash")
+                .lastName("bhanushali")
                 .guardian(guardian)
                 .build();
         studentRepository.save(student);
@@ -62,6 +62,16 @@ public class StudentRepositoryTest {
     public void printStudentByGuardianName() {
         List<Student> students = studentRepository.findByGuardianName("Dev");
         System.out.println(students);
+    }
+    @Test
+    public void printStudentByEmailAddress() {
+        Student student = studentRepository.getStudentByEmailAddress("yashbhadra1@gmail.com");
+        System.out.println("student => "+ student);
+    }
+    @Test
+    public void printStudentFirstNameByEmailAddress() {
+        String studentFirstName = studentRepository.getStudentFirstNameByEmailAddress("yashbhadra1@gmail.com");
+        System.out.println("student => "+ studentFirstName);
     }
 
 }
