@@ -4,22 +4,22 @@ import com.college.course.management.entity.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
 import java.util.List;
 
 @SpringBootTest
 public class StudentRepositoryTest {
     @Autowired
     private StudentRepository studentRepository;
+
     @Test
     public void saveStudent() {
         Student student = Student.builder()
                 .emailId("yashbhadra1@gmail.com")
                 .firstName("Yash")
                 .lastName("Bhanushali")
-              ///  .guardianName("Ketan")
-               // .guardianEmail("ketan@gmail.com")
-              //  .guardianMobile("999999999")
+                ///  .guardianName("Ketan")
+                // .guardianEmail("ketan@gmail.com")
+                //  .guardianMobile("999999999")
                 .build();
 
         studentRepository.save(student);
@@ -53,25 +53,39 @@ public class StudentRepositoryTest {
         List<Student> studentsWithFirstName = studentRepository.findByFirstName("shabbir");
         System.out.println(studentsWithFirstName);
     }
+
     @Test
     public void printStudentByFirstNameContaining() {
         List<Student> students = studentRepository.findByFirstNameContaining("sh");
         System.out.println(students);
     }
+
     @Test
     public void printStudentByGuardianName() {
         List<Student> students = studentRepository.findByGuardianName("Dev");
         System.out.println(students);
     }
+
     @Test
     public void printStudentByEmailAddress() {
         Student student = studentRepository.getStudentByEmailAddress("yashbhadra1@gmail.com");
-        System.out.println("student => "+ student);
+        System.out.println("student => " + student);
     }
+
     @Test
     public void printStudentFirstNameByEmailAddress() {
         String studentFirstName = studentRepository.getStudentFirstNameByEmailAddress("yashbhadra1@gmail.com");
-        System.out.println("student => "+ studentFirstName);
+        System.out.println("student => " + studentFirstName);
     }
 
+    @Test
+    public void printStudentByEmailAddressNative() {
+        Student student = studentRepository.getStudentByEmailAddressNative("yashbhadra1@gmail.com");
+        System.out.println("student => " + student);
+    }
+    @Test
+    public void printStudentByEmailAddressNativeNamedParam() {
+        Student student = studentRepository.getStudentByEmailAddressNativeNamedParam("yashbhadra1@gmail.com");
+        System.out.println("student => " + student);
+    }
 }
