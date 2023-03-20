@@ -1,16 +1,14 @@
 package com.college.course.management.entity;
 
 import jakarta.persistence.*;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@ToString(exclude = "course")
 public class CourseMaterial {
     @Id
     @SequenceGenerator(name = "course_material_sequence",
@@ -33,7 +31,7 @@ public class CourseMaterial {
             /**cascade type as we do want to create a course material
              * if corresponding course is not there by creating a course first.**/
             cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY
+            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "course_id",
