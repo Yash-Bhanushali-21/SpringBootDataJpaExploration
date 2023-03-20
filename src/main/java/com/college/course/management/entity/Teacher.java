@@ -30,6 +30,14 @@ public class Teacher {
     private String lastName;
 
 
+    @OneToMany(
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY,
+            mappedBy = "teacher"
+    )
+    private List<Course> courses;
+
+
 
 
 }

@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @SpringBootTest
@@ -22,21 +23,42 @@ public class TeacherRepositoryTest {
     @Test
     public void saveTeacher() {
         Course javaCourse = Course.builder()
-                .title("Java")
+                .title("Hibernate")
                 .credit(5)
                 .build();
         Course dbaCourse = Course.builder()
-                .title("DBA")
+                .title("Spring")
                 .credit(5)
                 .build();
 
         Teacher teacher = Teacher.builder()
-                .firstName("Test")
-                .lastName("lastNameTest")
-              //   .courses(List.of(dbaCourse,javaCourse))
+                .firstName("Telusko")
+                .lastName("Learnings")
+                .courses(List.of(dbaCourse,javaCourse))
                 .build();
 
         teacherRepo.save(teacher);
+    }
+
+    @Test
+    public void addCourse() {
+        Course c = Course.builder()
+                  .title("AssociationCourse")
+                .credit(5)
+                .build();
+        Teacher t= Teacher.builder()
+                 .firstName("AssociationTeacher")
+                .lastName("AssociationTeach")
+                .build();
+        List <Course> courses = new ArrayList<Course>();
+        courses.add(c);
+
+        t.setCourses(courses);
+        c.setTeacher(t);
+
+        teacherRepo.save(t);
+
+
     }
 
 }

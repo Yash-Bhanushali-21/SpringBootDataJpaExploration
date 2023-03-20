@@ -30,8 +30,8 @@ public class Course {
             fetch = FetchType.EAGER
             )
     @JoinColumn(
-            name = "teacher_id",
-            referencedColumnName = "teacherId"
+            name = "teacher_id",referencedColumnName = "teacherId"
+
     )
     private Teacher teacher;
 
