@@ -94,4 +94,6 @@ public class StudentRepositoryTest {
         Integer student = studentRepository.updateStudentNameByEmailId("testupdateName","shabbir@gmail.com");
         System.out.println("student => " + student);
     }
+
+
 }

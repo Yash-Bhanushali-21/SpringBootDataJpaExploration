@@ -16,7 +16,8 @@ public class TeacherRepositoryTest {
 
     @Test
     public void getTeachers() {
-        System.out.println(teacherRepo.findAll());
+        List<Teacher> teacherList = teacherRepo.findAll();
+        System.out.println(teacherList);
     }
     @Test
     public void saveTeacher() {
@@ -32,7 +33,7 @@ public class TeacherRepositoryTest {
         Teacher teacher = Teacher.builder()
                 .firstName("Test")
                 .lastName("lastNameTest")
-                .courses(List.of(dbaCourse,javaCourse))
+              //   .courses(List.of(dbaCourse,javaCourse))
                 .build();
 
         teacherRepo.save(teacher);

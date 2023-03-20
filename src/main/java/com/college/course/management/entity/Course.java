@@ -26,4 +26,14 @@ public class Course {
     )
     private CourseMaterial courseMaterial;
 
+    @ManyToOne(cascade = CascadeType.ALL,
+            fetch = FetchType.EAGER
+            )
+    @JoinColumn(
+            name = "teacher_id",
+            referencedColumnName = "teacherId"
+    )
+    private Teacher teacher;
+
+
 }
