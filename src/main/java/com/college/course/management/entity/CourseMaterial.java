@@ -31,7 +31,10 @@ public class CourseMaterial {
             /**cascade type as we do want to create a course material
              * if corresponding course is not there by creating a course first.**/
             cascade = CascadeType.ALL,
-            fetch = FetchType.EAGER
+            fetch = FetchType.EAGER,
+
+            /** whenever a course is being store, course material is mandatory. **/
+            optional = false
     )
     @JoinColumn(
             name = "course_id",
