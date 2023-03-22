@@ -1,6 +1,7 @@
 package com.college.course.management.repository;
 
 import com.college.course.management.entity.Course;
+import com.college.course.management.entity.Student;
 import com.college.course.management.entity.Teacher;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -90,6 +91,26 @@ public class CourseRepositoryTest {
                 firstPageTenRecords
         );
         System.out.println("courses=" + courses);
+    }
+
+    @Test
+    public void saveCourseWithStudentAndTeacher() {
+        Teacher teacher = Teacher.builder()
+                .firstName("Murugna")
+                .lastName("Swami")
+                .build();
+        Student student = Student.builder()
+                .firstName("Abhishek")
+                .lastName("Singh")
+                .emailId("abhisheksingh@gmail.com")
+                .build();
+        Course course = Course.builder()
+                .title("AI")
+                .credit(12)
+                .teacher(teacher)
+                .build();
+        course.addStudents(student);
+        courseRepository.save(course);
     }
 
 
